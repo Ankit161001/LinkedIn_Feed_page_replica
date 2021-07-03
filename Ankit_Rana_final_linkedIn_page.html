@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LinkedIn</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+
+      body {
+        background-color: #f3f2ef;
+      }
+
+      .navbar {
+        background-color: white;
+        width: 100vw;
+        height: 60px;
+        border-bottom: 1px solid #00000014;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      .nav-content {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 10px;
+      }
+
+      .nav-img {
+        margin-left: 18%;
+        color: #0a66c2;
+      }
+
+      .nav-search {
+        height: 35px;
+        width: 270px;
+        margin-left: 7px;
+        border: none;
+        border-radius: 4px;
+        background-color: #eef3f8;
+        text-indent: 12px;
+      }
+
+      .navigation {
+        margin-left: 12%;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-icon {
+        text-decoration: none;
+        color: #666;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20px;
+        margin-right: 7px;
+        font-size: 12px;
+        font-weight: 300;
+      }
+
+      .main {
+        height: 100%;
+        display: flex;
+        margin: 0 auto;
+        margin-top: 70px;
+        max-width: 73%;
+      }
+
+      .left {
+        /*border: 1px solid black;*/
+        width: 250px;
+        margin-top: 20px;
+      }
+
+      .center {
+        /* border: 1px solid black; */
+        flex-grow: 1;
+        margin-top: 20px;
+        margin-left: 25px;
+        margin-bottom: 20px;
+      }
+
+      .right {
+        /*border: 1px solid black;*/
+        width: 300px;
+        margin-top: 20px;
+        margin-left: 25px;
+      }
+
+      .create-posts {
+        background-color: white;
+        height: 120px;
+        width: 540px;
+        border: 1px solid #6e6e6e42;
+        border-radius: 8px;
+      }
+
+      .post-image {
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      .create-post-top {
+        display: flex;
+      }
+
+      .post-input {
+        height: 40px;
+        flex: 1;
+        border-radius: 25px;
+        border: 1px solid #aaa;
+        margin: 14px;
+        text-indent: 15px;
+      }
+      .create-post-bottom {
+        display: flex;
+        justify-content: space-around;
+      }
+      .post-button {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        color: #00000099;
+      }
+
+      .mr-10 {
+        margin-right: 10px;
+      }
+
+      .blue-button {
+        color: #70b5f9;
+      }
+      .green-button {
+        color: #7fc15e;
+      }
+      .orange-button {
+        color: #e7a33e;
+      }
+      .pink-button {
+        color: #f89295;
+      }
+
+      .posts-hr{
+        border-top: 1px solid #c7c2c2aa;
+        margin-top: 35px;
+      }
+
+      .post{
+        background-color: white;
+        border: 1px solid rgb(136, 133, 133);
+        border-color: #6e6e6e42;
+        margin-top: 20px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .post-info{
+        display: flex;
+        align-items: center;
+      }
+      
+      .post-metadata{
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        margin-top: 7px;
+        line-height: 1.1rem;
+      }
+
+      .post-creator{
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .faded-text{
+        font-size: 12px;
+        color: #00000099;
+      }
+
+      .post-data{
+        font-size: 14px;
+        color: #666;
+        margin-left: 20px;
+        margin-right: 10px;
+        margin-top: 8px;
+      }
+
+      .read-more{
+        font-size: 14px;
+        margin-left: 443px;
+        margin-top: 3px;
+        color: rgb(161, 159, 159);
+      }
+
+      .likes{
+        font-size: 18px;
+        color:#3d63cc;
+        margin-left: 20px;
+      }
+
+      .heart{
+        font-size: 18px;
+        color:#eb4c4c;
+        margin-left: 4px;
+      }
+
+      .clap{
+        font-size: 18px;
+        color:#79e06f;
+        margin-left: 4px;
+        margin-right: 7px;
+      }
+
+      .center-content{
+        display: flex;
+        align-items: center;
+      }
+
+      .no-of-likes{
+        font-size: 13px;
+        margin-left: 0px;
+      }
+
+      .interaction-button{
+        border: none;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        color: rgb(92, 87, 87);
+        margin-right: 12px;
+        margin-top: 10px;
+        margin-bottom: 7px;
+      }
+
+      .post-interactions{
+        display: flex;
+      }
+
+      .likes-hr{
+        border-top: 1px solid #adaaaaaa;
+        margin-top: 7px;
+        margin-bottom: 0px;
+      }
+
+      .post-content-image{
+        margin-top: 5px;
+        margin-bottom: 0px;
+      }
+
+      .bottom-buttons{
+        font-size: 18px;
+        color:#767679;
+        margin-left: 20px;
+        margin-right: 4px;
+      }
+
+      .profile-details{
+        background-color: white;
+        height: 350px;
+        width: 230px;
+        border: 1px solid #6e6e6e42;
+        border-radius: 8px;
+      }
+
+      .discover-more{
+        background-color: white;
+        height: 130px;
+        width: 230px;
+        margin-top: 12px;
+        border: 1px solid #6e6e6e42;
+        border-radius: 8px;
+      }
+
+      .profile-image {
+        height: 65px;
+        width: 65px;
+        border-radius: 50%;
+        margin-top: 20px;
+        margin-left: 80px;
+        border: 3px solid white;
+      }
+
+      .profile-name{
+        font-size: 15px;
+        font-weight: 600;
+        margin-left: 79px;
+        margin-top: 40px;
+      }
+
+      .org-name{
+        font-size: 12px;
+        font-weight: 345;
+        margin-left: 25px;
+        margin-top: 7px;
+      }
+
+      .profile-hr{
+        border-top: 1px solid #cccacaaa;
+        margin-top: 15px;
+        margin-bottom: 0px;
+      }
+
+      .profile-hr2{
+        border-top: 1px solid #cccacaaa;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .profile-hr3{
+        border-top: 1px solid #cccacaaa;
+        margin-top: 3px;
+        margin-bottom: 10px;
+      }
+
+      .profile-tag1{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-right: 115px;
+        margin-top: 15px;
+        color: rgb(143, 141, 141);
+      }
+
+      .profile-tag2{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-top: 0px;
+        color: rgb(24, 24, 24);
+      }
+
+      .profile-tag3{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-right: 49px;
+        margin-top: 5px;
+        color: rgb(143, 141, 141);
+      }
+
+      .profile-tag-blue{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 15px;
+        color: rgb(41, 115, 212);
+      }
+
+      .profile-tag-blue2{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 5px;
+        color: rgb(41, 115, 212);
+      }
+
+      .profile-tag-blue3{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 12px;
+        margin-right: 10px;
+        margin-top: 12px;
+        color: rgb(41, 115, 212);
+      }
+
+      .profile-tag4{
+        font-size: 12px;
+        font-weight: 345;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+
+      .gold-icon{
+        font-size: 14px;
+        margin-left: 10px;
+        color: rgb(216, 185, 83);
+      }
+
+      .grey-icon{
+        font-size: 14px;
+        margin-left: 10px;
+        color: rgb(92, 92, 91);
+      }
+
+      .grey-icon2{
+        font-size: 16px;
+        margin-top: 12px;
+        margin-left: 140px;
+        font-weight: 600;
+        color: rgb(92, 92, 91);
+      }
+
+      .profile-tag5{
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 2px;
+        margin-top: 0px;
+        color: rgb(24, 24, 24);
+      }
+
+      .profile-tag6{
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 70px;
+        margin-top: 9px;
+        color: rgb(139, 138, 138);
+      }
+
+      .linkedin-news{
+        background-color: white;
+        height: 325px;
+        width: 300px;
+        border: 1px solid #6e6e6e42;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .top-courses{
+        background-color: white;
+        height: 225px;
+        width: 300px;
+        border: 1px solid #6e6e6e42;
+        border-radius: 8px;
+      }
+
+      .news-tag1{
+        font-size: 15px;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-top: 15px;
+      }
+
+      .info-icon1{
+        margin-top: 15px;
+        font-size: 16px;
+        margin-left: 155px;
+        color: rgb(92, 92, 91);
+      }
+
+      .info-icon2{
+        margin-top: 15px;
+        font-size: 16px;
+        margin-left: 120px;
+        color: rgb(92, 92, 91);
+      }
+
+      .radio-button{
+        margin-top: 15px;
+        font-size: 11px;
+        margin-left: 10px;
+        margin-right: 10px;
+        color: rgb(92, 92, 91);
+      }
+
+      .down-arrow{
+        margin-top: 15px;
+        font-size: 22px;
+        margin-left: 5px;
+        margin-right: 10px;
+        color: rgb(92, 92, 91);
+      }
+
+      .right-arrow{
+        margin-top: 10px;
+        font-size: 22px;
+        margin-left: 5px;
+        margin-right: 10px;
+        color: rgb(92, 92, 91);
+      }
+
+      .news-tag2{
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 0px;
+        margin-top: 10px;
+      }
+
+      .news-tag3{
+        font-size: 12px;
+        font-weight: 400;
+        margin-left: 30px;
+        margin-top: 3px;
+        color: rgb(117, 117, 117);
+      }
+
+      .news-tag4{
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 30px;
+        margin-top: 10px;
+        color: rgb(117, 117, 117);
+      }
+
+      .news-tag5{
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+
+      .news-tag6{
+        font-size: 12px;
+        font-weight: 400;
+        margin-left: 25px;
+        margin-top: 3px;
+        color: rgb(117, 117, 117);
+      }
+
+      .news-tag7{
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 15px;
+        margin-top: 10px;
+        color: rgb(117, 117, 117);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-content">
+        <div class="nav-img">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="34"
+            height="34"
+            viewBox="0 0 34 34"
+            class="nav-logo"
+          >
+            <g>
+              <path
+                d="M34,2.5v29A2.5,2.5,0,0,1,31.5,34H2.5A2.5,2.5,0,0,1,0,31.5V2.5A2.5,2.5,0,0,1,2.5,0h29A2.5,2.5,0,0,1,34,2.5ZM10,13H5V29h5Zm.45-5.5A2.88,2.88,0,0,0,7.59,4.6H7.5a2.9,2.9,0,0,0,0,5.8h0a2.88,2.88,0,0,0,2.95-2.81ZM29,19.28c0-4.81-3.06-6.68-6.1-6.68a5.7,5.7,0,0,0-5.06,2.58H17.7V13H13V29h5V20.49a3.32,3.32,0,0,1,3-3.58h.19c1.59,0,2.77,1,2.77,3.52V29h5Z"
+                fill="currentColor"
+              ></path>
+            </g>
+          </svg>
+        </div>
+        <input class="nav-search" type="text" placeholder="Search" />
+        <nav class="navigation">
+          <a class="nav-icon">
+            <span class="material-icons"> home </span> Home
+          </a>
+          <a class="nav-icon">
+            <span class="material-icons"> people </span> My Network
+          </a>
+          <a class="nav-icon">
+            <span class="material-icons"> work </span> Jobs
+          </a>
+          <a class="nav-icon">
+            <span class="material-icons"> chat_bubble </span> Messaging
+          </a>
+          <a class="nav-icon">
+            <span class="material-icons"> notifications </span> Notifications
+          </a>
+          <a class="nav-icon">
+            <span class="material-icons"> person </span> Me
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="left">
+        <div class="profile-details">
+          <div style="background-color: #0aa; width: 230px; height: 60px; border-radius: 8px;">
+          <img class="profile-image" src="https://media-exp3.licdn.com/dms/image/C5603AQHWeWXTpZoeMQ/profile-displayphoto-shrink_100_100/0/1622791508975?e=1630540800&v=beta&t=aNGBIqaK3b22v7VHahbBK7IycjmjIgN4wxcoA2kHF_8" />
+          </div>
+          <div class="profile-name">Ankit Rana</div>
+          <div class="org-name">Student at Amity University Kolkata</div>
+          <div class="profile-hr"></div>
+          <div class="center-content">
+            <div class="profile-tag1">Connections</div>
+            <div class="profile-tag-blue">49</div>
+          </div>
+          <div class="profile-tag2">Grow your network</div>
+          <div class="center-content">
+            <div class="profile-tag3">Who viewed your profile</div>
+            <div class="profile-tag-blue2">34</div>
+          </div>
+          <div class="profile-hr"></div>
+          <div class="profile-tag4">Access exclusive tools & insights</div>
+          <div class="center-content">
+            <div><span class="material-icons gold-icon"> star_half </span></div>
+            <div class="profile-tag5">Try Premium Free for 1 Month</div>
+          </div>
+          <div class="profile-hr2"></div>
+          <div class="center-content">
+            <div><span class="material-icons grey-icon"> bookmark </span></div>
+            <div class="profile-tag5">My Items</div>
+          </div>
+        </div>
+        <div class="discover-more">
+          <div class="profile-tag-blue3">Groups</div>
+          <div class="center-content">
+            <div class="profile-tag-blue3">Events</div>
+            <div><span class="material-icons grey-icon2"> add </span></div>
+          </div>
+          <div class="profile-tag-blue3">Followed Hashtags</div>
+          <div class="profile-hr3"></div>
+          <div class="profile-tag6">Discover more</div>
+        </div>
+      </div>
+
+
+      <div class="center">
+        <div class="create-posts">
+          <div class="create-post-top">
+            <img class="post-image" src="https://media-exp3.licdn.com/dms/image/C5603AQHWeWXTpZoeMQ/profile-displayphoto-shrink_100_100/0/1622791508975?e=1630540800&v=beta&t=aNGBIqaK3b22v7VHahbBK7IycjmjIgN4wxcoA2kHF_8" />
+            <input placeholder="Start a Post" class="post-input" type="text" />
+          </div>
+          <div class="create-post-bottom">
+            <button class="post-button">
+              <span class="material-icons blue-button mr-10"> image </span>
+              Photo
+            </button>
+            <button class="post-button">
+              <span class="material-icons green-button mr-10">
+                play_circle_filled
+              </span>
+              Video
+            </button>
+            <button class="post-button">
+              <span class="material-icons orange-button mr-10"> event </span>
+              Event
+            </button>
+            <button class="post-button">
+              <span class="material-icons pink-button mr-10"> article </span>
+              Write Article
+            </button>
+          </div>
+          <div class="posts-hr"></div>
+
+          <div class="post">
+            <div class="post-info">
+              <img class="post-image" src="https://media-exp3.licdn.com/dms/image/C4D0BAQHiNSL4Or29cg/company-logo_100_100/0/1519856215226?e=1633564800&v=beta&t=-xTWKf-K5KzAp7aEP-Q12tai7XmYV7_nxKo6rUo2q1g">
+              <div class="post-metadata">
+                <div class="post-creator">Google</div>
+                <div class="faded-text">21,745,746 followers</div>
+                <div class="faded-text">2d •
+                  <span class="material-icons faded-text"> public </span>
+                </div>
+              </div>
+            </div>
+            <div class="post-data">Google’s sustainability goals are ambitious—and we’re committed to working across our organization to bring them to life. Meet three Googlers who are...</div>
+            <div class="read-more">...see more</div>
+            <div class="post-content-image">
+              <img width= 539px src = "https://media-exp3.licdn.com/dms/image/C5622AQHiMeKZOMaYmA/feedshare-shrink_800/0/1624642265212?e=1628121600&v=beta&t=WRqMb7f0Lvm214ImwvDruufN4QS-c2Hdp36reoqqL2Q">
+            </div>
+            <div class=" center-content">
+              <span class="likes material-icons"> recommend </span>
+              <span class="heart material-icons"> favorite </span>
+              <span class="clap material-icons"> waving_hand </span>
+              <span class="no-of-likes">12,047 • 176 comments</span>
+            </div>
+            <div class="likes-hr"></div>
+            <div class="post-interactions">
+              <button class="interaction-button">
+                <span class="bottom-buttons material-icons"> thumb_up </span>
+                Like
+              </button>
+              <button class="interaction-button">
+                <span class="bottom-buttons material-icons"> comment </span>
+                Comment
+              </button>
+              <button class="interaction-button">
+                <span class="bottom-buttons material-icons"> share </span>
+                Share
+              </button>
+              <button class="interaction-button">
+                <span class="bottom-buttons material-icons"> send </span>
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="right">
+        <div class="linkedin-news">
+          <div class="center-content">
+            <div class="news-tag1">LinkedIn News</div>
+            <div><span class="material-icons info-icon1"> info </span></div>
+          </div>
+          <div class="center-content">
+            <div><span class="material-icons radio-button">radio_button_unchecked</span></div>
+            <div class="news-tag2">Why luck matters for career success</div>
+          </div>
+          <div class="news-tag3">2d ago • 1,556 readers</div>
+          <div class="center-content">
+            <div><span class="material-icons radio-button">radio_button_unchecked</span></div>
+            <div class="news-tag2">Apple pushes back on remote work</div>
+          </div>
+          <div class="news-tag3">1d ago • 204,413 readers</div>
+          <div class="center-content">
+            <div><span class="material-icons radio-button">radio_button_unchecked</span></div>
+            <div class="news-tag2">Gates' gift for gender equality</div>
+          </div>
+          <div class="news-tag3">2d ago • 15,888 readers</div>
+          <div class="center-content">
+            <div><span class="material-icons radio-button">radio_button_unchecked</span></div>
+            <div class="news-tag2">When job interviews are endless</div>
+          </div>
+          <div class="news-tag3">1d ago • 87,754 readers</div>
+          <div class="center-content">
+            <div><span class="material-icons radio-button">radio_button_unchecked</span></div>
+            <div class="news-tag2">Moderna vaccination gets approval</div>
+          </div>
+          <div class="news-tag3">3d ago • 141,650 readers</div>
+          <div class="center-content">
+            <div class="news-tag4">Show more</div>
+            <div><span class="material-icons down-arrow"> expand_more </span></div>
+          </div>
+        </div>
+        <div class="top-courses">
+          <div class="center-content">
+            <div class="news-tag1">Today's top courses</div>
+            <div><span class="material-icons info-icon2"> info </span></div>
+          </div>
+          <div class="news-tag5">1. Speaking Confidently and Effectively</div>
+          <div class="news-tag6">Pete Mockaitis | How to be awesome at your...</div>
+          <div class="news-tag5">2. DevOps Foundation</div>
+          <div class="news-tag6">James Wickett and Ernest Mueller</div>
+          <div class="news-tag5">3. Unconscious Bias</div>
+          <div class="news-tag6">Stacey Gordon</div>
+          <div class="center-content">
+            <div class="news-tag7">Show more on LinkedIn Learning</div>
+            <div><span class="material-icons right-arrow"> arrow_forward </span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
